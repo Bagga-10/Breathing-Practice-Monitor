@@ -32,7 +32,6 @@ body {
 .instructions {
     margin-top: 10px;
     font-size: 24px;
-    font-family: cursive;
     margin: 10px 10px;
 }
 
@@ -50,13 +49,9 @@ button {
     border-radius: 20px;
 }
 
-h1 {
-    font-family: cursive;
-}
 
 span {
     font-size: 50px;
-    font-family: cursive;
     color: seagreen;
 }
 

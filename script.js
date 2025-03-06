@@ -1,4 +1,5 @@
 let breatheInterval;
+let countInterval;
 let phaseIndex = 0;
 const bgMusic = document.getElementById("bgMusic");
 
@@ -11,8 +12,12 @@ const phases = [
 function startBreathing() {
     if (breatheInterval) return;
     phaseIndex = 0;
-    bgMusic.play(); 
-    cycleBreathing();
+
+    // Start music 1 second before
+    bgMusic.play();
+    setTimeout(() => {
+        cycleBreathing();
+    }, 1000);
 }
 
 function cycleBreathing() {
@@ -24,6 +29,8 @@ function cycleBreathing() {
     circle.style.transition = `all ${phase.time / 1000}s ease-in-out`;
     circle.style.transform = `scale(${phase.scale})`;
 
+    // Ensure previous counting stops before starting new one
+    clearInterval(countInterval);
     displayCountInsideCircle(phase.count, phase.time);
 
     breatheInterval = setTimeout(() => {
@@ -34,30 +41,33 @@ function cycleBreathing() {
 
 function stopBreathing() {
     clearTimeout(breatheInterval);
+    clearInterval(countInterval); // Stop counting
     breatheInterval = null;
+    countInterval = null;
 
     document.querySelector(".instructions").innerText = "Press Start to Begin";
-    document.querySelector(".circle").style.transition = "none"; 
-    document.querySelector(".circle").style.transform = "scale(1)";
-    
-    bgMusic.pause(); 
-    bgMusic.currentTime = 0; 
+    const circle = document.querySelector(".circle");
+    circle.style.transition = "none"; 
+    circle.style.transform = "scale(1)";
+    circle.innerText = ""; // Clear the number inside the circle
+
+    bgMusic.pause();
+    bgMusic.currentTime = 0;
 }
 
 function displayCountInsideCircle(count, duration) {
     let circle = document.querySelector(".circle");
     let interval = duration / count;
     
-    let currentCount = 1; 
-    circle.innerText = currentCount; 
+    let currentCount = 1;
+    circle.innerText = currentCount;
 
-    let countInterval = setInterval(() => {
-        currentCount++;
-        if (currentCount > count) {
+    countInterval = setInterval(() => {
+        if (currentCount >= count) {
             clearInterval(countInterval);
-            circle.innerText = ""; 
         } else {
-            circle.innerText = currentCount; 
+            currentCount++;
+            circle.innerText = currentCount;
         }
     }, interval);
 }
