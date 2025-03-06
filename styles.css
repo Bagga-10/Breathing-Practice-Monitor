@@ -1,0 +1,78 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #282c34;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding: 20px;
+}
+
+.circle {
+    width: 120px;
+    height: 120px;
+    background-color: lightblue;
+    border-radius: 50%;
+    position: relative;
+    transition: all 4s ease-in-out;
+    margin: 50px 20px;
+    
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    font-weight: bold;
+    color: black; 
+}
+
+
+.instructions {
+    margin-top: 10px;
+    font-size: 24px;
+    font-family: cursive;
+    margin: 10px 10px;
+}
+
+.controls {
+    margin-top: 30px;
+    gap: 50px;
+    display: flex;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 20px;
+}
+
+h1 {
+    font-family: cursive;
+}
+
+span {
+    font-size: 50px;
+    font-family: cursive;
+    color: seagreen;
+}
+
+/* Responsive for iPhone 13 Pro */
+@media (max-width: 430px) {
+    h1 {
+        font-size: 24px;
+    }
+    .circle {
+        width: 80px;
+        height: 80px;
+    }
+    .instructions {
+        font-size: 20px;
+    }
+    button {
+        font-size: 16px;
+    }
+}

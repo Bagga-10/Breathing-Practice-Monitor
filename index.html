@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathing Practice Monitor</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>A Breath of <span>Peace</span> in Every Moment</h1>
+    <div class="circle"></div>
+    <div class="instructions">Press Start to Begin</div>
+    <div class="controls">
+        <button onclick="startBreathing()">Start</button>
+        <button onclick="stopBreathing()">Stop</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="anxiety-140015.mp3" type="audio/mp3">
+    </audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
